@@ -1,5 +1,5 @@
 syntax = "proto3";
-option go_package = ".;userpb";
+option go_package = ".;personpb";
 import "google/protobuf/timestamp.proto";
 
 message Person {

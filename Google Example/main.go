@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"account/userpb"
+	"account/personpb"
 
 	"google.golang.org/protobuf/proto"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -24,36 +24,36 @@ https://developers.google.com/protocol-buffers/docs/gotutorial
 func main() {
 	peopleBook := createBook()
 	writeFile(peopleBook, outputFileName)
-	emptyPeopleBook := &userpb.AddressBook{}
+	emptyPeopleBook := &personpb.AddressBook{}
 	readFile(outputFileName, emptyPeopleBook)
 	fmt.Println("Data read from file", outputFileName, emptyPeopleBook)
 }
 
 func createBook() proto.Message {
-	person := userpb.Person{
+	person := personpb.Person{
 		Name:        "Ichigo",
 		Id:          2020,
 		Email:       "email@coco.com",
 		LastUpdated: timestamppb.Now(),
-		Phones: []*userpb.Person_PhoneNumber{
-			{Number: "22321", Type: userpb.Person_MOBILE},
-			{Number: "31231", Type: userpb.Person_HOME},
+		Phones: []*personpb.Person_PhoneNumber{
+			{Number: "22321", Type: personpb.Person_MOBILE},
+			{Number: "31231", Type: personpb.Person_HOME},
 		},
 	}
 
-	person2 := userpb.Person{
+	person2 := personpb.Person{
 		Name:        "Kenpachi",
 		Id:          2020,
 		Email:       "gotei@coco.com",
 		LastUpdated: timestamppb.Now(),
-		Phones: []*userpb.Person_PhoneNumber{
-			{Number: "321", Type: userpb.Person_MOBILE},
-			{Number: "432", Type: userpb.Person_HOME},
+		Phones: []*personpb.Person_PhoneNumber{
+			{Number: "321", Type: personpb.Person_MOBILE},
+			{Number: "432", Type: personpb.Person_HOME},
 		},
 	}
 
-	book := userpb.AddressBook{
-		People: []*userpb.Person{
+	book := personpb.AddressBook{
+		People: []*personpb.Person{
 			&person,
 			&person2,
 		},
