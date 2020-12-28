@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-option go_package = ".;userpb";
-
-message User {
-    string firstname = 1;
-    string lastname = 2;
-    repeated string emails = 3;   
-}

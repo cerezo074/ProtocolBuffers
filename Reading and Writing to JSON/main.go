@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"account/userpb"
+	"account/personpb"
 
 	"github.com/golang/protobuf/jsonpb"
 	"github.com/golang/protobuf/proto"
@@ -20,23 +20,23 @@ func main() {
 }
 
 func runEmun() {
-	person := &userpb.Person{
+	person := &personpb.Person{
 		Age:          20,
 		FirstName:    "Ichigo",
 		LastName:     "Kurosaki",
 		Height:       1.90,
 		PhoneNumbers: []string{"2121312312", "312312312"},
-		EyeColour:    userpb.Person_EYE_BROWN,
+		EyeColour:    personpb.Person_EYE_BROWN,
 	}
 
 	fmt.Println("Person created,", person)
-	person.EyeColour = userpb.Person_EYE_GREEN
+	person.EyeColour = personpb.Person_EYE_GREEN
 	fmt.Println("Person updated,", person)
 }
 
 func runJSON() {
-	user := createUser()
-	json, err := writeJSON(user)
+	person := createPerson()
+	json, err := writeJSON(person)
 
 	if err != nil {
 		log.Fatalln("Can't transform struct into json")
@@ -44,26 +44,26 @@ func runJSON() {
 	}
 
 	fmt.Println("Struct transformed into json,", json)
-	emptyUser := &userpb.User{}
-	if err2 := readJSON(json, emptyUser); err2 != nil {
+	emptyPerson := &personpb.Person{}
+	if err2 := readJSON(json, emptyPerson); err2 != nil {
 		log.Fatalln("Can't transform json into struct")
 		return
 	}
 
-	fmt.Println("Data read from json", emptyUser)
+	fmt.Println("Data read from json", emptyPerson)
 }
 
-func createUser() *userpb.User {
-	user := userpb.User{
-		Firstname: "Jaimito",
-		Lastname:  "Perez",
-		Emails: []string{
-			"jaimito@f.co",
-			"perez@w.com",
-		},
+func createPerson() proto.Message {
+	person := &personpb.Person{
+		Age:          18,
+		FirstName:    "Jaimito",
+		LastName:     "Perez",
+		Height:       1.78,
+		PhoneNumbers: []string{"342", "432"},
+		EyeColour:    personpb.Person_EYE_GREEN,
 	}
 
-	return &user
+	return person
 }
 
 func writeJSON(data proto.Message) (string, error) {
