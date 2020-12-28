@@ -1,10 +1,9 @@
 syntax = "proto3";
 // package addresspb; //declare the package name in this option or go_package
 option go_package = ".;addresspb";
-import "Street.proto";
+import "proto/City.proto";
 
-message Building {
+message Street {
     string name = 1;
-    int32 number = 2;
-    Street street = 3;
+    City city = 2;
 }
