@@ -1,4 +1,4 @@
-# ProtocExample
+# Protoc
 In order to compile your files with .proto extension you need to install protoc cli. On OSX installation is easy and you can do it through Homebrew with the follow command. 
 
 *brew install protobuf*
