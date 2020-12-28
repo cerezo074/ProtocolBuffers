@@ -1,0 +1,10 @@
+syntax = "proto3";
+// package addresspb; //declare the package name in this option or go_package
+option go_package = ".;addresspb";
+import "Street.proto";
+
+message Building {
+    string name = 1;
+    int32 number = 2;
+    Street street = 3;
+}
