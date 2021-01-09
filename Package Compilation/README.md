@@ -3,11 +3,11 @@ In order to compile your files with .proto extension you need to install protoc 
 
 *brew install protobuf*
 
-After installation, run this command.
+After installation, run this command
 
-*protoc .proto -I. --go_out=:addresspb* 
+*protoc -I. proto/*.proto --go_out=:addresspb* 
 
-Remember you need to be in the same folder(**-I** option) in which your proto files are located and the **--go_out** option seeks for the folder you specify as the place to put your files compiled. Just in case you'll face some problems checkout your golang env variables like GOPATH and GOBIN.
+**-I** option indicates where are gonna be our proto files and the **--go_out** option seeks for the folder you specify as the place to put your files compiled. Just in case if you'll face some problems checkout your golang env variables like GOPATH and GOBIN. Don't forget it this command is customized for this example, that's why we use addresspb as the output directory cuz we have created that folder and inside proto folder we have our files to be compiled(* indicates we are gonna compile all files).
 
  - export GOBIN=$GOPATH/bin    
  - export GOPATH=$HOME/go
