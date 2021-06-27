@@ -13,3 +13,5 @@ After installation, run this command
  - export GOPATH=$HOME/go
 
 Just check that $GOBIN is added to your $GOPATH, and $GOPATH to your $PATH variable.
+
+**NOTE:** If you got stuck with this error ***The import path must contain at least one forward slash ('/') character.***. In some of your proto files, look over your **option go_package** definition. Somehow the protoc compiler has changed the way it works with relative packages. For more information open this [link](https://github.com/techschool/pcbook-go/issues/3#issuecomment-823206034)
